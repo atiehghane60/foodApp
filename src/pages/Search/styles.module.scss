@@ -2,7 +2,7 @@
   padding: 10px;
 }
 .wrapper {
-  border: 2px solid #ffb6c1;
+  border: 2px solid #e2966d;
   padding: 10px;
 }
 .emptyMessage {
@@ -15,4 +15,8 @@
   justify-content: center;
   min-height: 30vh;
   width: 100%;
+}
+.selectBox {
+  border-color: #e2966d !important;
+  width: 100% !important;
 }

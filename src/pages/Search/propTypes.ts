@@ -1,4 +1,4 @@
-interface Result {
+export interface Result {
   [key: string]: string;
 }
 export interface ResultTypes {

@@ -4,9 +4,9 @@ import { styled } from '@mui/material/styles';
 import React from 'react';
 import { RangeBarTypes } from './propTypes';
 
-function RangeBar({ label }: RangeBarTypes) {
+function RangeBar({ label, ...rests }: RangeBarTypes) {
   const PrettoSlider = styled(Slider)({
-    color: '#ffb6c1',
+    color: '#e2966d',
     height: 8,
     '& .MuiSlider-track': {
       border: 'none',
@@ -31,7 +31,7 @@ function RangeBar({ label }: RangeBarTypes) {
       width: 32,
       height: 32,
       borderRadius: '50% 50% 50% 0',
-      backgroundColor: '#ffb6c1',
+      backgroundColor: '#e2966d',
       transformOrigin: 'bottom left',
       transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
       '&:before': { display: 'none' },
@@ -51,6 +51,7 @@ function RangeBar({ label }: RangeBarTypes) {
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         defaultValue={20}
+        {...rests}
       />
     </React.Fragment>
   );

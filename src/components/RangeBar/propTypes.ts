@@ -1,3 +1,5 @@
 export interface RangeBarTypes {
-    label:string
+  label: string;
+  onChange?: any;
+  value?: any;
 }
