@@ -3,7 +3,7 @@ import qs from 'qs';
 
 interface Types {
   api: string;
-  model: any;
+  model?: any;
   headerType?: string;
 }
 

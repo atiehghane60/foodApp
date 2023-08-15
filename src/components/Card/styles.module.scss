@@ -1,0 +1,10 @@
+.cardContent {
+  p {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 32px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

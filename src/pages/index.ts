@@ -1,4 +1,4 @@
-import Search from './Search';
+import Search from './Search/Search';
 import NotFound from './errors/notFound/404';
 
 const Pages = [

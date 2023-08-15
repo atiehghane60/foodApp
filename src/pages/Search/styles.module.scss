@@ -1,0 +1,18 @@
+.root {
+  padding: 10px;
+}
+.wrapper {
+  border: 2px solid #ffb6c1;
+  padding: 10px;
+}
+.emptyMessage {
+  padding: 50px;
+  min-height: 250px;
+}
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+  width: 100%;
+}

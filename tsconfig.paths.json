@@ -3,8 +3,11 @@
     "baseUrl": "src",
     "paths": {
       "assets/*": ["pages/*"],
+      "containers/*": ["containers/*"],
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
+      "helper/*": ["helper/*"],
+      "services/*": ["services/*"],
       "pages/*": ["pages/*"]
     }
   }
