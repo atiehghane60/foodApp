@@ -15,7 +15,6 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.response.use(
   (resp: AxiosResponse) => ({
     ...(resp.data as any),
-    status: resp.status,
   }),
   async (err) => {
     if (err.response?.status === 504) {

@@ -7,6 +7,7 @@ function useSearch() {
   function complexSearch(model: complexSearchType) {
     return SearchServices.complexSearch(model);
   }
+
   return {
     complexSearch,
   };

@@ -3,13 +3,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // pages
 import Pages from 'pages';
-import { Container } from '@mui/material';
 import Layout from 'layout';
 
 function App() {
   return (
     <Layout>
-      <Container maxWidth="xl">
         <Router>
           <Routes>
             {Pages.map((route) => {
@@ -25,7 +23,6 @@ function App() {
             })}
           </Routes>
         </Router>
-      </Container>
     </Layout>
   );
 }

@@ -21,7 +21,7 @@ const Pages = [
     id: 2,
     title: 'Recipe',
     component: Recipe,
-    path: '/recipe/:id',
+    path: '/recipes/:id',
     exact: true,
   },
   {

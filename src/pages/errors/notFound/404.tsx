@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // assets and styles
-import notFoundImage from 'assets/404.png';
 import styles from './styles.module.scss';
 
 const NotFound = () => {
