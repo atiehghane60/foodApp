@@ -4,6 +4,10 @@
 
 This is a simple personal recipe book web application that allows users to search for recipes, view recipe details, and save their favorite recipes. The application is built using the React framework and utilizes the Spoonacular API to retrieve recipe data.
 
+##### Demo
+
+https://atiehghane60.github.io/foodApp
+
 ### Pages
 
 1. Recipe search page
