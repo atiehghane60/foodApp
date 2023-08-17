@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# About This Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Recipe Book Web Application
 
-## Available Scripts
+This is a simple personal recipe book web application that allows users to search for recipes, view recipe details, and save their favorite recipes. The application is built using the React framework and utilizes the Spoonacular API to retrieve recipe data.
 
-In the project directory, you can run:
+### Pages
 
-### `npm start`
+1. Recipe search page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Single recipe detail page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Favorite recipes list page
 
-### `npm test`
+### Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Autocomplete recipe search
+Selecting a recipe from the search results list
+Displaying details of a selected recipe
+Displaying similar recipes on the recipe detail page
+Adding recipes to the favorites list and removing them (favorites are stored in local storage)
 
-### `npm run build`
+#### Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Reactjs.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Spoonacular API: https://spoonacular.com/food-api.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Cypress (Unit tests): Cypress is a powerful and modern end-to-end testing framework that not only excels in functional testing but also provides a robust and efficient environment for unit tests. With its sleek and user-friendly interface, Cypress allows developers to write clear and concise unit test cases, making it easier to identify and fix bugs early in the development process.
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To set up and run the recipe book web application, please follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/atiehghane60/foodApp
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Register for a free Spoonacular API key at https://spoonacular.com/food-api.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Replace the API key in the .env with your own API key.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Run the application using
+   ```sh
+   npm run start
+   ```
