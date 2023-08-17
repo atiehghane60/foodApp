@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/foodApp/static/css/main.0b70972f.css",
+    "main.js": "/foodApp/static/js/main.2fcba04e.js",
+    "static/media/recipeHeader.webp": "/foodApp/static/media/recipeHeader.5283b6e4599016a29332.webp",
+    "index.html": "/foodApp/index.html",
+    "main.0b70972f.css.map": "/foodApp/static/css/main.0b70972f.css.map",
+    "main.2fcba04e.js.map": "/foodApp/static/js/main.2fcba04e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b70972f.css",
+    "static/js/main.2fcba04e.js"
+  ]
+}
