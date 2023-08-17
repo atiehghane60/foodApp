@@ -7,7 +7,7 @@ import { readFavoritesWishes, removeRecipe, storeRecipe } from 'helper/wishes';
 import { useNavigate } from 'react-router-dom';
 import { ResultTypes } from 'pages/Search/propTypes';
 
-const Wishes = () => {
+const Favorites = () => {
   const history = useNavigate();
   const [wishesList, setWishesList] = useState(readFavoritesWishes());
 
@@ -48,4 +48,4 @@ const Wishes = () => {
   );
 };
 
-export default Wishes;
+export default Favorites;
