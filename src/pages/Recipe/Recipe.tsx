@@ -21,7 +21,7 @@ const Recipe = () => {
   const [similarRecipes, setSimilarRecipes] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const { recipeInformation, SimilarRecipe } = useRecipe();
-  const match = useMatch('/recipes/:id');
+  const match = useMatch('/recipes/:id') || "";
 
   useEffect(() => {
     if (match) {
@@ -38,7 +38,7 @@ const Recipe = () => {
           setLoading(false);
         });
     }
-  }, []);
+  }, [match]);
 
   return (
     <Box>
