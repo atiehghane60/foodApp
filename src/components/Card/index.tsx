@@ -9,18 +9,25 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { CardTypes } from './propTypes';
 import styles from './styles.module.scss';
 
-export default function RecipeReviewCard({ title, image }: CardTypes) {
+export default function RecipeReviewCard({
+  title,
+  image,
+  onHeartClick,
+  onClick,
+  isFave
+}: CardTypes) {
+
   return (
-    <Card>
+    <Card onClick={onClick}>
       <CardMedia component="img" height="194" image={image} alt={title} />
-      <CardContent className={styles.cardContent} >
+      <CardContent className={styles.cardContent}>
         <Typography variant="body2" color="text.secondary">
           {title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton onClick={onHeartClick} aria-label="add to favorites">
+          <FavoriteIcon color={isFave ? "error": "action"} />
         </IconButton>
       </CardActions>
     </Card>

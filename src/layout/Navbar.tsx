@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import styles from './styles.module.scss';
+import { Link } from 'react-router-dom';
 
 interface Props {
   /**
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Favorites'];
 
 function Navbar(props: Props) {
   const { window } = props;
@@ -37,16 +38,18 @@ function Navbar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Food App
+        <a href="/">Food App</a>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+          <a href={`/${item}`}>
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          </a>
         ))}
       </List>
     </Box>
@@ -74,13 +77,15 @@ function Navbar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Food App
+            <a className={styles.logo} href="/">Food App</a>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
+              <a href={`/${item}`}>
+                <Button key={item} sx={{ color: '#fff' }}>
+                  {item}
+                </Button>
+              </a>
             ))}
           </Box>
         </Toolbar>

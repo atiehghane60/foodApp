@@ -8,7 +8,6 @@ import {
   Grid,
   InputLabel,
   MenuItem,
-  Select,
   SelectChangeEvent,
 } from '@mui/material';
 import styles from './styles.module.scss';
@@ -19,14 +18,16 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useDebouncedEffect } from 'helper/useDebouncedEffect';
 import { RangeOptions, SortOptions } from 'mock/searchOptions';
 import SelectBox from 'components/Select';
-import debounce from 'lodash/debounce';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { readFavoritesWishes, removeRecipe, storeRecipe } from 'helper/wishes';
 
 type Props = {};
 
 const Search = (props: Props) => {
+  const history = useNavigate();
   const [result, setResult] = useState<ResultTypes | null>(null);
+  const [wishesList, setWishesList] = useState(readFavoritesWishes());
   const [model, setModel] = useState<Result>({});
   const [sortingValue, setSortingValue] = useState('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -51,6 +52,23 @@ const Search = (props: Props) => {
       ...model,
       [title]: value,
     });
+  };
+  const handleGoToDetail = (id: number) => {
+    history(`recipes/${id}`);
+  };
+  const handleAddToWishes = (e: Event, recipe: ResultTypes) => {
+    e.stopPropagation();
+    if (wishesList.some((item: ResultTypes) => item.id === recipe.id)) {
+      removeRecipe(recipe.id);
+      const updatedList = wishesList.filter(
+        (item: ResultTypes) => item.id !== recipe.id
+      );
+      setWishesList(updatedList);
+      storeRecipe(updatedList);
+    } else {
+      storeRecipe(recipe);
+      setWishesList([...wishesList, recipe]);
+    }
   };
 
   useDebouncedEffect(
@@ -86,12 +104,18 @@ const Search = (props: Props) => {
                   other recipe websites for better results.
                 </Typography>
               ) : (
-                result?.results.map((item, index) => (
+                result?.results.map((item: any) => (
                   <Grid key={item.id} item md={3} xs={12}>
-                    <Link to={`/recipes/${item.id}`}>
-                      {' '}
-                      <Card title={item.title} image={item.image} />
-                    </Link>
+                    <Card
+                      isFave={
+                        wishesList.filter((wish: any) => wish.id === item.id)
+                          .length > 0
+                      }
+                      onClick={() => handleGoToDetail(item.id)}
+                      onHeartClick={(e: Event) => handleAddToWishes(e, item)}
+                      title={item.title}
+                      image={item.image}
+                    />
                   </Grid>
                 ))
               )}

@@ -1,5 +1,6 @@
 import Recipe from './Recipe/Recipe';
 import Search from './Search/Search';
+import Favorites from './Favorites/Favorites';
 import NotFound from './errors/notFound/404';
 
 const Pages = [
@@ -26,9 +27,9 @@ const Pages = [
   },
   {
     id: 3,
-    title: 'Wishes',
-    component: Search,
-    path: '/wishes',
+    title: 'Favorites',
+    component: Favorites,
+    path: '/Favorites',
     exact: true,
   },
 ];
