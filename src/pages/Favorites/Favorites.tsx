@@ -35,6 +35,7 @@ const Favorites = () => {
           <Grid md={6} xs={12}>
             <Box padding={2}>
               <Card
+                isFave={true}
                 onClick={() => handleGoToDetail(item.id)}
                 onHeartClick={(e: Event) => handleAddToWishes(e, item)}
                 title={item.title}

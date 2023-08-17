@@ -1,44 +1,40 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useSearch from 'hooks/search';
 import { Result, ResultTypes } from './propTypes';
 import Card from 'components/Card';
 import {
+  Autocomplete,
   Box,
+  Button,
   FormControl,
   Grid,
   InputLabel,
   MenuItem,
   SelectChangeEvent,
+  TextField,
 } from '@mui/material';
 import styles from './styles.module.scss';
-import SearchBar from 'components/SearchBar';
 import Typography from '@mui/material/Typography';
 import RangeBar from 'components/RangeBar';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useDebouncedEffect } from 'helper/useDebouncedEffect';
 import { RangeOptions, SortOptions } from 'mock/searchOptions';
 import SelectBox from 'components/Select';
 import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { readFavoritesWishes, removeRecipe, storeRecipe } from 'helper/wishes';
+import { debounce } from 'lodash';
 
 type Props = {};
 
 const Search = (props: Props) => {
   const history = useNavigate();
   const [result, setResult] = useState<ResultTypes | null>(null);
+  const [searchValue, setSearchValue] = useState<string>('');
   const [wishesList, setWishesList] = useState(readFavoritesWishes());
   const [model, setModel] = useState<Result>({});
   const [sortingValue, setSortingValue] = useState('');
   const [loading, setLoading] = useState<boolean>(true);
-  const { complexSearch } = useSearch();
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLoading(true);
-    setModel({
-      ...model,
-      query: event.target.value,
-    });
-  };
+  const { complexSearch, autoCompleteRecipeSearch } = useSearch();
 
   const handleChangeSorting = (event: SelectChangeEvent) => {
     setSortingValue(event.target.value as string);
@@ -71,18 +67,34 @@ const Search = (props: Props) => {
     }
   };
 
-  useDebouncedEffect(
-    () =>
-      complexSearch({ ...model, sort: sortingValue })
-        .then((res: any) => {
-          setResult(res);
-        })
-        .finally(() => {
-          setLoading(false);
-        }),
-    [model, sortingValue],
-    3000
-  );
+  const handleSubmitSearch = (value?: string) => {
+    setLoading(true);
+    complexSearch({
+      ...model,
+      sort: sortingValue,
+      query: value || searchValue,
+    })
+      .then((res: any) => {
+        setResult(res);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  // useEffect(() => {
+  //   handleSubmitSearch();
+  // }, []);
+
+  const [options, setOptions] = useState<any>([]);
+
+  const handleInputChange = debounce(async (e: any) => {
+    const { value } = e.target;
+    setSearchValue(value);
+    autoCompleteRecipeSearch(value).then((res: any) => {
+      const dataArray = Object.values(res);
+      setOptions(dataArray);
+    });
+  }, 3000);
 
   return (
     <Container maxWidth="xl">
@@ -123,8 +135,19 @@ const Search = (props: Props) => {
           </Box>
         </Grid>
         <Grid className={styles.root} md={4} xs={12}>
-          <Box className={styles.wrapper}>
-            <SearchBar onChange={handleSearchChange} />
+          <Box className={styles.searchBox}>
+            <Autocomplete
+              options={options}
+              onChange={(e: any, option: any) =>
+                handleSubmitSearch(option?.title)
+              }
+              getOptionLabel={(option: any) => option.title}
+              renderInput={(params) => (
+                <TextField {...params} label="Search..." variant="outlined" />
+              )}
+              onInputChange={handleInputChange}
+            />
+
             <Box mt={3}>
               {RangeOptions.map((item, i) => (
                 <RangeBar
@@ -154,6 +177,12 @@ const Search = (props: Props) => {
                 </SelectBox>
               </FormControl>
             </Box>
+            <Button
+              onClick={() => handleSubmitSearch()}
+              className={styles.searchSubmit}
+            >
+              Search
+            </Button>
           </Box>
         </Grid>
       </Grid>

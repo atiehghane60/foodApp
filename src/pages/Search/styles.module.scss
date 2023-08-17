@@ -1,7 +1,14 @@
 .root {
   padding: 10px;
 }
+.searchBox {
+  border: 2px solid #e2966d;
+  padding: 10px;
+  position: sticky;
+  top: 80px;
+}
 .wrapper {
+  min-height: 57vh;
   border: 2px solid #e2966d;
   padding: 10px;
 }
@@ -19,4 +26,18 @@
 .selectBox {
   border-color: #e2966d !important;
   width: 100% !important;
+}
+.searchSubmit {
+  width: 100%;
+  background-color: #e2966d;
+  color: white;
+  margin-top: 20px;
+  height: 40px;
+  text-transform: capitalize;
+  font-weight: 700;
+  &:hover {
+    background-color: #e2966d66;
+    color: #e2966d;
+    border: 1px solid #e2966d;
+  }
 }
