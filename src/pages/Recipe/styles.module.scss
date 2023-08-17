@@ -52,3 +52,24 @@
 .root {
   margin-top: 50px;
 }
+
+@media screen and (max-width: 992px) {
+  .headerWrapper {
+    height: auto;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+  .picture {
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    position: relative;
+    object-fit: cover;
+  }
+  .header {
+    margin-top: -50px;
+    &::after {
+      background: linear-gradient(to bottom right, #351717e1, #68432b72);
+    }
+  }
+}
