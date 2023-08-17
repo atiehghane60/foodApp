@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSearch from 'hooks/search';
 import { Result, ResultTypes } from './propTypes';
 import Card from 'components/Card';
@@ -81,9 +81,9 @@ const Search = (props: Props) => {
         setLoading(false);
       });
   };
-  // useEffect(() => {
-  //   handleSubmitSearch();
-  // }, []);
+  useEffect(() => {
+    handleSubmitSearch();
+  }, []);
 
   const [options, setOptions] = useState<any>([]);
 

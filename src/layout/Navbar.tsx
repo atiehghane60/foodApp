@@ -38,18 +38,18 @@ function Navbar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <a href="/">Food App</a>
+        <Link to="/">Food App</Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <a href={`/${item}`}>
+          <Link to={`/${item}`}>
             <ListItem key={item} disablePadding>
               <ListItemButton sx={{ textAlign: 'center' }}>
                 <ListItemText primary={item} />
               </ListItemButton>
             </ListItem>
-          </a>
+          </Link>
         ))}
       </List>
     </Box>
@@ -77,15 +77,17 @@ function Navbar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <a className={styles.logo} href="/">Food App</a>
+            <Link className={styles.logo} to="/">
+              Food App
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <a href={`/${item}`}>
+              <Link to={`/${item}`}>
                 <Button key={item} sx={{ color: '#fff' }}>
                   {item}
                 </Button>
-              </a>
+              </Link>
             ))}
           </Box>
         </Toolbar>

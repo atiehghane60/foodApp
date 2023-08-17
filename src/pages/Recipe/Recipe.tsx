@@ -109,9 +109,9 @@ const Recipe = () => {
             </Typography>
             <ol>
               {similarRecipes?.map((item: any) => (
-                <a href={`/recipes/${item.id}`}>
+                <Link to={`/recipes/${item.id}`}>
                   <li key={item.id}>{item.title}</li>
-                </a>
+                </Link>
               ))}
             </ol>
           </Container>
